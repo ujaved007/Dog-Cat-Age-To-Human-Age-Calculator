@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet"> 
+    <title>Calculator</title>
+</head>
+<body>
+    <div id = "container">
+        <header>
+            <h1>Cat / Dog Years to <br> 
+                <span id="bold">Human Years</span></h1>
+            <p id="description">Ever wondered how old is your furr-baby in human years?
+                Use our nifty calculator to find out now. The answer might 
+                surprise you. </p>
+        </header>
+        <div id="main-calc">
+            <form action = "" id="calc-form">
+                <label for = "species" id = "calc-label">Choose the species:</label> <br>
+                <input type = "button" value="DOG" class="def-button" id="dog-btn" autofocus>
+                <input type = "button" value="CAT" class="def-button" id="cat-btn">
+                <div class = "dog-calc">
+                    <label for="size" id = "calc-label">Select the breed size:</label> <br>
+                    <input type = "button" value="SMALL" id="sm-breed" class="def-button">
+                    <input type = "button" value="MEDIUM" id="med-breed" class="def-button">
+                    <input type = "button" value="LARGE" id="large-breed" class="def-button"> <br>
+
+                    <label for="dog-age" id = "calc-label">Enter your dog's age:</label> <br>
+                    <input type="number" min="1" id="dog-age" class = "input-field" required> <br>
+                    <input type="button" value="CALCULATE" class="calc-dog-age" id = "submit">
+                    <p id="dog-result"></p>
+                </div>
+                <div class = "cat-calc">
+                    <label for="cat-age" id = "calc-label">Enter your cat's age:</label> <br>
+                    <input type="number" min="1" id="cat-age" class = "input-field" required> <br>
+                    <input type="button" value="CALCULATE" class="calc-cat-age" id="submit">
+                    <p id="cat-result"></p>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="algo.js"></script>
+
+</body>
+</html>
