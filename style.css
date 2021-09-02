@@ -20,6 +20,10 @@ label {
 	color: #eb7262;
 	font-weight: 400;
 }
+input[type="number"],
+textarea {
+	font-size: 16px;
+}
 .input-field {
 	background-color: #f0e9da;
 	border-top: 0;
