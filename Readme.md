@@ -4,6 +4,9 @@ This is a simple calculator to find out the age of your furr babies in human yea
 [Cat/Dog Age Calculator](https://cat-dog-years-to-human-years.netlify.app)
 ![screenshot](https://drive.google.com/file/d/1xlBcqOfRt709j2WfeiZLysYpHN9KZpJp/view?usp=sharing)
 
+
+<img src="https://i.imgur.com/cdT1PNq.jpg" alt="screenshot" width="500"/>
+
 ## Features:
 
 - Cat age in human years
