@@ -15,6 +15,9 @@ const dogYears = document.getElementById("dog-age");
 const catMonths = document.getElementById("cat-months");
 const dogMonths = document.getElementById("dog-months");
 import { catCalculator } from "./src/monthsCalc.js";
+import { mdDogCalculator } from "./src/monthsCalc.js";
+import { mdEquation } from "./src/mdBreedEquation.js";
+import { lgBreedEq } from "./src/lgBreedEquation.js";
 
 //default calculator on-load
 
@@ -150,18 +153,20 @@ function medBreed(age) {
 	if (!Number.isInteger(age) || age < 0) {
 		return dogError();
 	} else {
-		if (age >= 0 && age <= 5) {
+		if (age >= 0 && age < 5) {
 			return dogAgeUntilFive(age);
-		} else if (age > 5) {
-			if (age % 2 !== 0) {
-				return (dogResult.textContent = `Your dog is ${
-					38 + (Math.floor(age / 2) - 2) * 9
-				} years old`);
-			} else {
-				return (dogResult.textContent = `Your dog is ${
-					42 + (age / 2 - 3) * 9
-				} years old`);
-			}
+		} else if (age === 5) {
+			return (dogResult.textContent = `Your dog is ${
+				mdDogCalculator(age, dogMonths)
+					? mdDogCalculator(age, dogMonths)
+					: `36 years old`
+			} `);
+		} else if (age >= 5) {
+			return (dogResult.textContent = `Your dog is ${
+				mdDogCalculator(age, dogMonths)
+					? mdDogCalculator(age, dogMonths)
+					: `${mdEquation(age)} years old`
+			} `);
 		}
 	}
 }
@@ -171,30 +176,10 @@ function lgeBreed(age) {
 	} else {
 		if (age >= 0 && age <= 5) {
 			return dogAgeUntilFive(age);
-		} else if (age > 5 && age <= 8) {
-			return (dogResult.textContent = `Your dog is ${
-				45 + (age - 6) * 5
-			} years old`);
-		} else if (age > 8 && age <= 12) {
-			if (age % 2 !== 0) {
-				return (dogResult.textContent = `Your dog is ${
-					61 + (Math.floor(age / 2) - 4) * 11
-				} years old`);
-			} else {
-				return (dogResult.textContent = `Your dog is ${
-					66 + (age / 2 - 5) * 11
-				} years old`);
-			}
-		} else if (age >= 13) {
-			if (age % 2 !== 0) {
-				return (dogResult.textContent = `Your dog is ${
-					82 + (Math.floor(age / 2) - 6) * 11
-				} years old`);
-			} else {
-				return (dogResult.textContent = `Your dog is ${
-					88 + (age / 2 - 7) * 11
-				} years old`);
-			}
+		} else if (age > 5) {
+			return (dogResult.textContent = `Your dog is ${lgBreedEq(
+				age
+			)} years old`);
 		}
 	}
 }
