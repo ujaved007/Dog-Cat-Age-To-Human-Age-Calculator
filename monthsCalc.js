@@ -1,9 +1,6 @@
-const catYears = document.getElementById("cat-age");
-const dogYears = document.getElementById("dog-age");
-const catMonths = document.getElementById("cat-months");
-const dogMonths = document.getElementById("dog-months");
+// cats and small dogs have identical age progressions. So will use catCalculator in dog small breed calculations as well.
 
-function firstTwoYears(years, months) {
+function catCalculator(years, months) {
 	const monthsValue = Number(months.value);
 	if (years === 0 && monthsValue) {
 		const age = monthsValue * 15;
@@ -35,4 +32,4 @@ function monthsCalc(months) {
 	return months % 12;
 }
 
-export { firstTwoYears };
+export { catCalculator };

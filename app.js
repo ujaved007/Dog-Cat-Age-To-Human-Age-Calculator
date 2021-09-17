@@ -14,7 +14,7 @@ const catYears = document.getElementById("cat-age");
 const dogYears = document.getElementById("dog-age");
 const catMonths = document.getElementById("cat-months");
 const dogMonths = document.getElementById("dog-months");
-import { firstTwoYears } from "./monthsCalc.js";
+import { catCalculator } from "./monthsCalc.js";
 
 //default calculator on-load
 
@@ -58,7 +58,8 @@ catAgeCalcBtn.addEventListener("click", () => {
 		!Number.isInteger(catYearsValue) ||
 		catYearsValue < 0 ||
 		!Number.isInteger(catMonthsValue) ||
-		catMonthsValue > 12
+		catMonthsValue > 12 ||
+		catMonthsValue < 0
 	) {
 		return (catResult.textContent =
 			"Please enter a valid number without decimals");
@@ -66,26 +67,26 @@ catAgeCalcBtn.addEventListener("click", () => {
 		if (catYearsValue <= 2 && catYearsValue >= 0) {
 			if (catYearsValue === 0) {
 				return (catResult.textContent = `${
-					firstTwoYears(catYearsValue, catMonths)
-						? `Your cat is ${firstTwoYears(catYearsValue, catMonths)}`
+					catCalculator(catYearsValue, catMonths)
+						? `Your cat is ${catCalculator(catYearsValue, catMonths)}`
 						: "Please enter value greater than 1"
 				}`);
 			} else if (catYearsValue === 1) {
 				return (catResult.textContent = `Your cat is ${
-					firstTwoYears(catYearsValue, catMonths)
-						? firstTwoYears(catYearsValue, catMonths)
+					catCalculator(catYearsValue, catMonths)
+						? catCalculator(catYearsValue, catMonths)
 						: "15 years old"
 				}`);
 			} else
 				return (catResult.textContent = `Your cat is ${
-					firstTwoYears(catYearsValue, catMonths)
-						? firstTwoYears(catYearsValue, catMonths)
+					catCalculator(catYearsValue, catMonths)
+						? catCalculator(catYearsValue, catMonths)
 						: "24 years old"
 				}`);
 		} else if (catYearsValue > 2) {
 			return (catResult.textContent = `Your cat is ${
-				firstTwoYears(catYearsValue, catMonths)
-					? firstTwoYears(catYearsValue, catMonths)
+				catCalculator(catYearsValue, catMonths)
+					? catCalculator(catYearsValue, catMonths)
 					: `${24 + (catYearsValue - 2) * 4} years old`
 			}`);
 		}
@@ -100,25 +101,41 @@ function dogError() {
 }
 
 function dogAgeUntilTwo(age) {
-	if (age === 1) {
-		return (dogResult.textContent = "Your dog is 15 years old");
+	if (age === 0) {
+		return (dogResult.textContent = `${
+			catCalculator(age, dogMonths)
+				? `Your dog is ${catCalculator(age, dogMonths)}`
+				: "Please enter value greater than 1"
+		}`);
+	} else if (age === 1) {
+		return (dogResult.textContent = `Your dog is ${
+			catCalculator(age, dogMonths)
+				? catCalculator(age, dogMonths)
+				: "15 years old"
+		}`);
 	} else if (age === 2)
-		return (dogResult.textContent = "Your dog is 24 years old");
+		return (dogResult.textContent = `Your dog is ${
+			catCalculator(age, dogMonths)
+				? catCalculator(age, dogMonths)
+				: "24 years old"
+		}`);
 	else
 		return (dogResult.textContent =
 			"Please enter a valid number greater than zero");
 }
 
 function smBreed(age) {
-	if (!Number.isInteger(age) || age <= 0) {
+	if (!Number.isInteger(age) || age < 0) {
 		return dogError();
 	} else {
 		if (age <= 2) {
 			return dogAgeUntilTwo(age);
 		} else {
 			return (dogResult.textContent = `Your dog is ${
-				24 + (age - 2) * 4
-			} years old`);
+				catCalculator(age, dogMonths)
+					? catCalculator(age, dogMonths)
+					: `${24 + (age - 2) * 4} years old`
+			}`);
 		}
 	}
 }
