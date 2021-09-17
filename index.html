@@ -26,7 +26,7 @@
 				</p>
 			</header>
 			<div id="main-calc">
-				<form action="" id="calc-form">
+				<form id="calc-form">
 					<label for="species" id="calc-label">Choose the species:</label>
 					<br />
 					<input
@@ -62,14 +62,27 @@
 
 						<label for="dog-age" id="calc-label">Enter your dog's age:</label>
 						<br />
-						<input
-							type="text"
-							min="1"
-							id="dog-age"
-							class="input-field"
-							required
-						/>
-						<br />
+						<div class="input-container">
+							<p class="sub-label">Years*</p>
+							<input
+								type="number"
+								min="1"
+								id="dog-age"
+								class="input-field"
+								placeholder="required"
+								required
+							/>
+							<p class="sub-label">Months</p>
+							<input
+								type="number"
+								min="1"
+								max="11"
+								id="dog-months"
+								class="input-field"
+								placeholder="optional"
+							/>
+							<br />
+						</div>
 						<input
 							type="button"
 							value="CALCULATE"
@@ -81,14 +94,27 @@
 					<div class="cat-calc">
 						<label for="cat-age" id="calc-label">Enter your cat's age:</label>
 						<br />
-						<input
-							type="number"
-							min="1"
-							id="cat-age"
-							class="input-field"
-							required
-						/>
-						<br />
+						<div class="input-container">
+							<p class="sub-label">Years*</p>
+							<input
+								type="number"
+								min="1"
+								id="cat-age"
+								class="input-field"
+								placeholder="required"
+								required
+							/>
+							<p class="sub-label">Months</p>
+							<input
+								type="number"
+								min="1"
+								max="11"
+								id="cat-months"
+								class="input-field"
+								placeholder="optional"
+							/>
+							<br />
+						</div>
 						<input
 							type="button"
 							value="CALCULATE"
@@ -101,6 +127,6 @@
 			</div>
 		</div>
 
-		<script src="app.js"></script>
+		<script src="app.js" type="module"></script>
 	</body>
 </html>

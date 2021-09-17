@@ -10,8 +10,11 @@ const dogResult = document.getElementById("dog-result");
 const smallBreedBtn = document.getElementById("sm-breed");
 const mediumBreedBtn = document.getElementById("med-breed");
 const largeBreedBtn = document.getElementById("large-breed");
-const catAgeField = document.getElementById("cat-age");
-const dogAgeField = document.getElementById("dog-age");
+const catYears = document.getElementById("cat-age");
+const dogYears = document.getElementById("dog-age");
+const catMonths = document.getElementById("cat-months");
+const dogMonths = document.getElementById("dog-months");
+import { firstTwoYears } from "./monthsCalc.js";
 
 //default calculator on-load
 
@@ -42,25 +45,42 @@ dogBtn.addEventListener("click", () => {
 
 // toggle results CATS
 
-catAgeField.addEventListener("click", () => {
+catYears.addEventListener("click", () => {
 	catResult.textContent = "";
 });
 
 //cat calculator
 
 catAgeCalcBtn.addEventListener("click", () => {
-	const catAgeFieldValue = Number(catAgeField.value);
-	if (!Number.isInteger(catAgeFieldValue) || catAgeFieldValue <= 0) {
+	const catYearsValue = Number(catYears.value);
+	if (!Number.isInteger(catYearsValue) || catYearsValue < 0) {
 		return (catResult.textContent =
 			"Please enter a valid number greater than zero without decimals");
 	} else {
-		if (catAgeFieldValue <= 2 && catAgeFieldValue > 0) {
-			if (catAgeFieldValue === 1) {
-				return (catResult.textContent = "Your cat is 15 years old");
-			} else return (catResult.textContent = "Your cat is 24 years old");
-		} else if (catAgeFieldValue > 2) {
+		if (catYearsValue <= 2 && catYearsValue >= 0) {
+			if (catYearsValue === 0) {
+				return (catResult.textContent = `${
+					firstTwoYears(catYearsValue, catMonths)
+						? `Your cat is ${firstTwoYears(catYearsValue, catMonths)}`
+						: "Please enter value greater than 1"
+				}`);
+			} else if (catYearsValue === 1) {
+				return (catResult.textContent = `Your cat is ${
+					firstTwoYears(catYearsValue, catMonths)
+						? firstTwoYears(catYearsValue, catMonths)
+						: "15 years old"
+				}`);
+			} else
+				return (catResult.textContent = `Your cat is ${
+					firstTwoYears(catYearsValue, catMonths)
+						? firstTwoYears(catYearsValue, catMonths)
+						: "24 years old"
+				}`);
+		} else if (catYearsValue > 2) {
 			return (catResult.textContent = `Your cat is ${
-				24 + (catAgeFieldValue - 2) * 4
+				firstTwoYears(catYearsValue, catMonths)
+					? firstTwoYears(catYearsValue, catMonths)
+					: 24 + (catYearsValue - 2) * 4
 			} years old`);
 		}
 	}
@@ -159,7 +179,7 @@ function lgeBreed(age) {
 }
 // toggle results DOGS
 
-dogAgeField.addEventListener("click", () => {
+dogYears.addEventListener("click", () => {
 	dogResult.textContent = "";
 });
 
@@ -185,12 +205,12 @@ largeBreedBtn.addEventListener("click", () => {
 });
 
 dogAgeCalcBtn.addEventListener("click", () => {
-	const dogAgeFieldValue = Number(dogAgeField.value);
+	const dogYearsValue = Number(dogYears.value);
 	if (smallBreedBtn.classList.contains("selected-btn")) {
-		smBreed(dogAgeFieldValue);
+		smBreed(dogYearsValue);
 	} else {
 		if (mediumBreedBtn.classList.contains("selected-btn")) {
-			medBreed(dogAgeFieldValue);
-		} else lgeBreed(dogAgeFieldValue);
+			medBreed(dogYearsValue);
+		} else lgeBreed(dogYearsValue);
 	}
 });

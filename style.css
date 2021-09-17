@@ -1,3 +1,17 @@
+::placeholder {
+	/* Chrome, Firefox, Opera, Safari 10.1+ */
+	opacity: 0.5; /* Firefox */
+}
+
+:-ms-input-placeholder {
+	/* Internet Explorer 10-11 */
+	opacity: 0.5;
+}
+
+::-ms-input-placeholder {
+	/* Microsoft Edge */
+	opacity: 0.5;
+}
 body {
 	-webkit-appearance: none;
 	font-family: "Roboto", sans-serif;
@@ -17,7 +31,11 @@ h1 {
 	line-height: 1.5;
 	font-size: 2rem;
 }
-
+.sub-label {
+	padding: 0px 0px 0px 0px;
+	margin: 0 10px 0 0;
+	color: #eb7262;
+}
 #bold {
 	font-weight: 500;
 }
@@ -25,10 +43,15 @@ label {
 	color: #eb7262;
 	font-weight: 400;
 }
+.input-container {
+	display: flex;
+	margin: 10px 0 10px 0;
+}
 input[type="number"],
 textarea {
 	font-size: 16px;
 }
+
 .input-field {
 	background-color: #f0e9da;
 	border-top: 0;
@@ -36,6 +59,8 @@ textarea {
 	border-left: 0;
 	border-color: #eb7262;
 	border-width: 1px;
+	width: 100px;
+	margin-right: 20px;
 }
 #input-field:focus {
 	outline: 0;
