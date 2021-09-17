@@ -53,9 +53,15 @@ catYears.addEventListener("click", () => {
 
 catAgeCalcBtn.addEventListener("click", () => {
 	const catYearsValue = Number(catYears.value);
-	if (!Number.isInteger(catYearsValue) || catYearsValue < 0) {
+	const catMonthsValue = Number(catMonths.value);
+	if (
+		!Number.isInteger(catYearsValue) ||
+		catYearsValue < 0 ||
+		!Number.isInteger(catMonthsValue) ||
+		catMonthsValue > 12
+	) {
 		return (catResult.textContent =
-			"Please enter a valid number greater than zero without decimals");
+			"Please enter a valid number without decimals");
 	} else {
 		if (catYearsValue <= 2 && catYearsValue >= 0) {
 			if (catYearsValue === 0) {
@@ -80,8 +86,8 @@ catAgeCalcBtn.addEventListener("click", () => {
 			return (catResult.textContent = `Your cat is ${
 				firstTwoYears(catYearsValue, catMonths)
 					? firstTwoYears(catYearsValue, catMonths)
-					: 24 + (catYearsValue - 2) * 4
-			} years old`);
+					: `${24 + (catYearsValue - 2) * 4} years old`
+			}`);
 		}
 	}
 });
