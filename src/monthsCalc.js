@@ -1,4 +1,5 @@
-// cats and small dogs have identical age progressions. So will use catCalculator in dog small breed calculations as well.
+// cats and small dogs have identical age progressions throughout their life. So will use catCalculator in dog small breed calculations as well.
+// cats and all dogs have identical age progression until 5years old. So will use catCalculator() in those calculations too.
 
 function catCalculator(years, months) {
 	const monthsValue = Number(months.value);

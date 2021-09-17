@@ -14,7 +14,7 @@ const catYears = document.getElementById("cat-age");
 const dogYears = document.getElementById("dog-age");
 const catMonths = document.getElementById("cat-months");
 const dogMonths = document.getElementById("dog-months");
-import { catCalculator } from "./monthsCalc.js";
+import { catCalculator } from "./src/monthsCalc.js";
 
 //default calculator on-load
 
@@ -100,7 +100,7 @@ function dogError() {
 		"Please enter a valid number greater than zero without decimals");
 }
 
-function dogAgeUntilTwo(age) {
+function dogAgeUntilFive(age) {
 	if (age === 0) {
 		return (dogResult.textContent = `${
 			catCalculator(age, dogMonths)
@@ -119,7 +119,13 @@ function dogAgeUntilTwo(age) {
 				? catCalculator(age, dogMonths)
 				: "24 years old"
 		}`);
-	else
+	else if (age > 2 && age <= 5) {
+		return (dogResult.textContent = `Your dog is ${
+			catCalculator(age, dogMonths)
+				? catCalculator(age, dogMonths)
+				: `${24 + (age - 2) * 4} years old`
+		}`);
+	} else
 		return (dogResult.textContent =
 			"Please enter a valid number greater than zero");
 }
@@ -129,7 +135,7 @@ function smBreed(age) {
 		return dogError();
 	} else {
 		if (age <= 2) {
-			return dogAgeUntilTwo(age);
+			return dogAgeUntilFive(age);
 		} else {
 			return (dogResult.textContent = `Your dog is ${
 				catCalculator(age, dogMonths)
@@ -141,15 +147,11 @@ function smBreed(age) {
 }
 
 function medBreed(age) {
-	if (!Number.isInteger(age) || age <= 0) {
+	if (!Number.isInteger(age) || age < 0) {
 		return dogError();
 	} else {
-		if (age <= 2) {
-			return dogAgeUntilTwo(age);
-		} else if (age > 2 && age <= 5) {
-			return (dogResult.textContent = `Your dog is ${
-				24 + (age - 2) * 4
-			} years old`);
+		if (age >= 0 && age <= 5) {
+			return dogAgeUntilFive(age);
 		} else if (age > 5) {
 			if (age % 2 !== 0) {
 				return (dogResult.textContent = `Your dog is ${
@@ -167,12 +169,8 @@ function lgeBreed(age) {
 	if (!Number.isInteger(age) || age <= 0) {
 		return dogError();
 	} else {
-		if (age <= 2) {
-			return dogAgeUntilTwo(age);
-		} else if (age > 2 && age <= 5) {
-			return (dogResult.textContent = `Your dog is ${
-				24 + (age - 2) * 4
-			} years old`);
+		if (age >= 0 && age <= 5) {
+			return dogAgeUntilFive(age);
 		} else if (age > 5 && age <= 8) {
 			return (dogResult.textContent = `Your dog is ${
 				45 + (age - 6) * 5
