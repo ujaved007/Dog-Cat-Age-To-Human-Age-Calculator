@@ -20,6 +20,7 @@ body {
 	color: #323d66;
 	padding-top: 50px;
 	padding-bottom: 50px;
+	overflow: hidden;
 }
 input {
 	-webkit-appearance: none;
@@ -46,6 +47,9 @@ label {
 .input-container {
 	display: flex;
 	margin: 10px 0 10px 0;
+}
+.sub-label-container {
+	display: flex;
 }
 input[type="number"],
 textarea {
@@ -115,6 +119,16 @@ textarea {
 	}
 	#container {
 		padding: 20px 20px 50px;
+	}
+	.input-container {
+		margin-top: 10px;
+		flex-wrap: wrap;
+		justify-content: flex-start;
+		align-items: flex-end;
+	}
+	.sub-label-container {
+		align-items: flex-start;
+		margin-bottom: 10px;
 	}
 	#submit {
 		padding: 5px 10px 5px 10px;

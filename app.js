@@ -14,11 +14,11 @@ const catYears = document.getElementById("cat-age");
 const dogYears = document.getElementById("dog-age");
 const catMonths = document.getElementById("cat-months");
 const dogMonths = document.getElementById("dog-months");
-import { catCalculator } from "./src/monthsCalc.js";
-import { mdDogCalculator } from "./src/monthsCalc.js";
-import { mdEquation } from "./src/mdBreedEquation.js";
-import { lgBreedEq } from "./src/lgBreedEquation.js";
-
+import { catCalculator } from "./src/catCalc.js";
+import { mdDogEq } from "./src/mdDogEquation.js";
+import { lgDogEq } from "./src/lgDogEquation.js";
+import { mdDogCalculator } from "./src/mdDogCalc.js";
+import { lgDogCalculator } from "./src/lgDogCalc.js";
 //default calculator on-load
 
 window.addEventListener("DOMContentLoaded", () => {
@@ -165,7 +165,7 @@ function medBreed(age) {
 			return (dogResult.textContent = `Your dog is ${
 				mdDogCalculator(age, dogMonths)
 					? mdDogCalculator(age, dogMonths)
-					: `${mdEquation(age)} years old`
+					: `${mdDogEq(age)} years old`
 			} `);
 		}
 	}
@@ -174,12 +174,20 @@ function lgeBreed(age) {
 	if (!Number.isInteger(age) || age <= 0) {
 		return dogError();
 	} else {
-		if (age >= 0 && age <= 5) {
+		if (age >= 0 && age < 5) {
 			return dogAgeUntilFive(age);
-		} else if (age > 5) {
-			return (dogResult.textContent = `Your dog is ${lgBreedEq(
-				age
-			)} years old`);
+		} else if (age === 5) {
+			return (dogResult.textContent = `Your dog is ${
+				lgDogCalculator(age, dogMonths)
+					? lgDogCalculator(age, dogMonths)
+					: `36 years old`
+			} `);
+		} else if (age >= 5) {
+			return (dogResult.textContent = `Your dog is ${
+				lgDogCalculator(age, dogMonths)
+					? lgDogCalculator(age, dogMonths)
+					: `${lgDogEq(age)} years old`
+			} `);
 		}
 	}
 }
