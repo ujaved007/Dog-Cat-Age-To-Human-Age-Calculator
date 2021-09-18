@@ -65,7 +65,7 @@ catAgeCalcBtn.addEventListener("click", () => {
 		catMonthsValue < 0
 	) {
 		return (catResult.textContent =
-			"Please enter a valid number without decimals");
+			"Please enter a valid number within range and without decimals");
 	} else {
 		if (catYearsValue <= 2 && catYearsValue >= 0) {
 			if (catYearsValue === 0) {
@@ -100,7 +100,7 @@ catAgeCalcBtn.addEventListener("click", () => {
 
 function dogError() {
 	return (dogResult.textContent =
-		"Please enter a valid number greater than zero without decimals");
+		"Please enter a valid number within range and without decimals");
 }
 
 function dogAgeUntilFive(age) {
@@ -134,7 +134,14 @@ function dogAgeUntilFive(age) {
 }
 
 function smBreed(age) {
-	if (!Number.isInteger(age) || age < 0) {
+	const dogMonthsValue = Number(dogMonths.value);
+	if (
+		!Number.isInteger(age) ||
+		age < 0 ||
+		!Number.isInteger(dogMonthsValue) ||
+		dogMonthsValue > 12 ||
+		dogMonthsValue < 0
+	) {
 		return dogError();
 	} else {
 		if (age <= 2) {
@@ -150,7 +157,14 @@ function smBreed(age) {
 }
 
 function medBreed(age) {
-	if (!Number.isInteger(age) || age < 0) {
+	const dogMonthsValue = Number(dogMonths.value);
+	if (
+		!Number.isInteger(age) ||
+		age < 0 ||
+		!Number.isInteger(dogMonthsValue) ||
+		dogMonthsValue > 12 ||
+		dogMonthsValue < 0
+	) {
 		return dogError();
 	} else {
 		if (age >= 0 && age < 5) {
@@ -171,7 +185,14 @@ function medBreed(age) {
 	}
 }
 function lgeBreed(age) {
-	if (!Number.isInteger(age) || age <= 0) {
+	const dogMonthsValue = Number(dogMonths.value);
+	if (
+		!Number.isInteger(age) ||
+		age < 0 ||
+		!Number.isInteger(dogMonthsValue) ||
+		dogMonthsValue > 12 ||
+		dogMonthsValue < 0
+	) {
 		return dogError();
 	} else {
 		if (age >= 0 && age < 5) {
